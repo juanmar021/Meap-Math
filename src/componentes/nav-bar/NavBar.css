@@ -1,0 +1,55 @@
+.container-nav {
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 10;
+    position: fixed;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.322);
+}
+
+.cont-buscar {
+    background: #fff;
+    box-sizing: border-box;
+    z-index: 10;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.322);
+    border-radius: 3px;
+}
+
+.tool-bar {
+    height: 100px;
+}
+
+.icon {
+    cursor: pointer;
+    color: black;
+}
+
+.cont-logo {
+    margin-right: 30px;
+}
+
+.cont-filtros {
+    top: 100px;
+}
+
+.bred {
+    background: red;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* .cont-filtro {
+    align-content: center;
+    align-items: center;
+} */
+
+.icon {
+    margin-left: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+}

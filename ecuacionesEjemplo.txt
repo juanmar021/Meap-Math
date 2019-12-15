@@ -1,0 +1,5 @@
+
+
+REGLA FALSA: x^2 -2                      a: 0 b:2
+
+RAPHSON: x ^3  + 4 * x ^2 -10               x0= 0.75

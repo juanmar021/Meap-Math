@@ -1,0 +1,20 @@
+.Header {
+    height: 100%;
+}
+
+.nav-bar-escritorio {
+    display: block;
+}
+
+.nav-bar-movil {
+    display: none;
+}
+
+@media screen and (max-width: 1060px) {
+    .nav-bar-escritorio {
+        display: none;
+    }
+    .nav-bar-movil {
+        display: block;
+    }
+}
