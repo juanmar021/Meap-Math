@@ -24,7 +24,7 @@ export default function Secante()
 
      const [valores, setValores] = useState([]);
 
-     const [state, setState] = useState({a:"0",b:"1",ecuacion:"x ^3 + 2* x^2 + 10*x -20 "});
+     const [state, setState] = useState({a:"",b:"",ecuacion:""});
      const [error, setError] = useState({a:"",b:"",ecuacion:""});
 
      const handleChange = evt => {
