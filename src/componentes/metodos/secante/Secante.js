@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import { TableHead, TableRow, TableCell, TableBody, Grid, TextField, Button } from '@material-ui/core';
-import './ReglaFalsa.css'
-import { create, all } from 'mathjs'
+ import { create, all } from 'mathjs'
 
 
 const config = { }
@@ -19,13 +18,13 @@ const useStyles = makeStyles({
     },
   });
 
-export default function ReglaFalsa()
+export default function Secante()
 {
   
 
      const [valores, setValores] = useState([]);
 
-     const [state, setState] = useState({a:"",b:"",ecuacion:""});
+     const [state, setState] = useState({a:"0",b:"1",ecuacion:"x ^3 + 2* x^2 + 10*x -20 "});
      const [error, setError] = useState({a:"",b:"",ecuacion:""});
 
      const handleChange = evt => {
@@ -43,34 +42,40 @@ export default function ReglaFalsa()
       const calcular=(a,b)=>{
         let datos=[];
 
+        a=parseFloat(a);
+        b=parseFloat(b);
+
           
-      let i=1;
-      let fa=getValor(state.a);
-      let fb=getValor(state.b);
+      let i=2;
+      let fa=getValor(a);
+      let fb=getValor(b);
       let xi=getXi(a, b, fa, fb);
       let fxi=getValor(xi);
-      
-       datos.push({i, a, b, fa, fb, xi, fxi});
+      let dif=xi-b;
+      if(dif<0)dif*=-1;
+       datos.push({i, a, b, fa, fb, xi, fxi,dif});
  
      
       do{
        i++;  
-      if((getValor(xi)*getValor(a))<0)
-      {
-          b=xi;
-      }else{
-          a=xi;
-      }
+
+       a=b;
+       b=xi;
+     
+      
       fa=getValor(a);
       fb=getValor(b);
       xi=getXi(a, b, fa, fb);
+      dif=xi-datos[i-3].xi;
+      if(dif<0)dif*=-1;
       fxi=getValor(xi);
       
-      datos.push({i, a, b, fa, fb, xi, fxi});
+      
+      datos.push({i, a, b, fa, fb, xi, fxi,dif});
   
      
        
-      }while(!compararIgualdad(xi, datos[i-2].xi));
+      }while(!compararIgualdad(xi, datos[i-3].xi));
 
       setValores(datos);
       }
@@ -133,7 +138,8 @@ export default function ReglaFalsa()
 
       const getXi=( a,  b, fa, fb)=>{
 
-        return (a*(fb)-(b)*(fa))/(fb-fa);
+         return (b-((b-a)/(fb-(fa)))*(fb));
+
       }
       
       const handleCalcular=()=>{
@@ -148,11 +154,11 @@ export default function ReglaFalsa()
       const validar = () => {
 
           if (state.a === "") {
-            setError({ ...error, a: "Ingrese el valor de a" });
+            setError({ ...error, a: "Ingrese el valor de x0" });
             return false;
           }
           if (state.b === "") {
-            setError({ ...error, b: "Ingrese el valor de b" });
+            setError({ ...error, b: "Ingrese el valor de x1" });
             return false;
           }
 
@@ -177,7 +183,7 @@ export default function ReglaFalsa()
     return (
     
     <div>
-        <h1 align="center">Regla falsa</h1>
+        <h1 align="center">Secante</h1>
 
         <Grid  container direction="row" justify="center" spacing={3} style={{marginBottom:20}}>
                 <Grid  item sm={4}>
@@ -202,7 +208,7 @@ export default function ReglaFalsa()
                             required
                             type="number"
                             fullWidth
-                            label="Ingrese el valor de a"
+                            label="Ingrese el valor de x0"
                             name="a"
                             value={state.a}
                             onChange={handleChange}
@@ -217,7 +223,7 @@ export default function ReglaFalsa()
                             required
                             type="number"
                             fullWidth
-                            label="Ingrese el valor de b"
+                            label="Ingrese el valor de x1"
                             name="b"
                             value={state.b}
                             onChange={handleChange}
@@ -251,26 +257,29 @@ function Tabla(props)
         <TableHead>
           <TableRow>
             <TableCell style={{color:"white"}} >i</TableCell>           
-            <TableCell style={{color:"white"}} align="center" >a</TableCell>
-            <TableCell style={{color:"white"}} align="center" >b</TableCell>
-            <TableCell style={{color:"white"}} align="center" >f(a)</TableCell>
-            <TableCell style={{color:"white"}} align="center" >f(b)</TableCell>
+            <TableCell style={{color:"white"}} align="center" >x0</TableCell>
+            <TableCell style={{color:"white"}} align="center" >x1</TableCell>
+            <TableCell style={{color:"white"}} align="center" >f(x0)</TableCell>
+            <TableCell style={{color:"white"}} align="center" >f(x1)</TableCell>
             <TableCell style={{color:"white"}} align="center" >xi</TableCell>
             <TableCell style={{color:"white"}} align="center" >f(xi)</TableCell>
+            <TableCell style={{color:"white"}} align="center" >|xi-xi-1|</TableCell>
+
  
             
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.valores.map(biseccion => (
-            <TableRow key={biseccion.i}>
-              <TableCell component="th" scope="row"> {biseccion.i} </TableCell>
-              <TableCell align="center">{biseccion.a}</TableCell>
-              <TableCell align="center">{biseccion.b}</TableCell>
-              <TableCell align="center">{biseccion.fa}</TableCell>
-              <TableCell align="center">{biseccion.fb}</TableCell>
-              <TableCell align="center">{biseccion.xi}</TableCell>
-              <TableCell align="center">{biseccion.fxi}</TableCell>
+          {props.valores.map(secante => (
+            <TableRow key={secante.i}>
+              <TableCell component="th" scope="row"> {secante.i} </TableCell>
+              <TableCell align="center">{secante.a}</TableCell>
+              <TableCell align="center">{secante.b}</TableCell>
+              <TableCell align="center">{secante.fa}</TableCell>
+              <TableCell align="center">{secante.fb}</TableCell>
+              <TableCell align="center">{secante.xi}</TableCell>
+              <TableCell align="center">{secante.fxi}</TableCell>
+              <TableCell align="center">{secante.dif}</TableCell>
 
                          
             </TableRow>

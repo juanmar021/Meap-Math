@@ -49,8 +49,9 @@ export default function Biseccion()
         let datos=[];
         let fa=getValor(a);
         let fb=getValor(b);
-        let xi=(a+b)/2;
-        let fxi=getValor(xi);
+
+        let xi=(a + b)/2;
+         let fxi=getValor(parseFloat(xi));
         let i=1;
         let errorAproximado=ea/100;
         
@@ -86,6 +87,7 @@ export default function Biseccion()
     const getValor=(x)=>{
 
          // double r= (4*(Math.pow(x, 2) + 4 * (Math.pow(x, 2)) -10;
+         console.log(x)
 
           let  ecuacion=state.ecuacion.replace(/x/gi,x);
           let r;
@@ -108,7 +110,7 @@ export default function Biseccion()
 
         if(validar()){
 
-             calcular(state.a,state.b,state.ea);
+             calcular(parseFloat(state.a),parseFloat(state.b),parseFloat(state.ea));
         }
 
       }

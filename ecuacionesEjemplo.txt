@@ -1,4 +1,4 @@
-
+BISECCION: x^2 + 4* x^2 -10                         a: 1 b:2 ea: 0.25
 
 REGLA FALSA: x^2 -2                      a: 0 b:2
 

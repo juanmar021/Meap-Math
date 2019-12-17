@@ -10,12 +10,11 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Biseccion from '../componentes/metodos/biseccion/biseccion';
 import ReglaFalsa from '../componentes/metodos/regla-falsa/ReglaFalsa';
 import Raphson from '../componentes/metodos/raphson/Raphson';
 import Copyright from '../componentes/Copyright';
+import Secante from '../componentes/metodos/secante/Secante';
 
 const drawerWidth = 240;
 
@@ -90,6 +89,9 @@ export default function Home() {
            metodo===1 && <ReglaFalsa/> 
         } 
         
+        {
+           metodo===2 && <Secante/> 
+        } 
         {
            metodo===3 && <Raphson/> 
         } 

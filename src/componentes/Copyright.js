@@ -1,7 +1,6 @@
 
 import React from 'react'
-import URL_WEB  from '../utils/Constantes'
-import NAME_WEB  from '../utils/Constantes'
+
 
 import Typography from '@material-ui/core/Typography';
 
