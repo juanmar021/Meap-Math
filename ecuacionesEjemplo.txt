@@ -2,4 +2,6 @@ BISECCION: x^2 + 4* x^2 -10                         a: 1 b:2 ea: 0.25
 
 REGLA FALSA: x^2 -2                      a: 0 b:2
 
+SECANTE: x ^3 + 2* x^2 + 10*x -20       x0= 0 y x1=1
+
 RAPHSON: x ^3  + 4 * x ^2 -10               x0= 0.75

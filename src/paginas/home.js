@@ -15,6 +15,8 @@ import ReglaFalsa from '../componentes/metodos/regla-falsa/ReglaFalsa';
 import Raphson from '../componentes/metodos/raphson/Raphson';
 import Copyright from '../componentes/Copyright';
 import Secante from '../componentes/metodos/secante/Secante';
+import Jacobi from '../componentes/metodos/jacobi/Jacobi';
+import Seidel from '../componentes/metodos/gauss-seidel/Seidel';
 
 const drawerWidth = 240;
 
@@ -95,10 +97,18 @@ export default function Home() {
         {
            metodo===3 && <Raphson/> 
         } 
+          {
+           metodo===5 && <Jacobi/> 
+        } 
+          {
+           metodo===6 && <Seidel/> 
+        } 
           
-          <div className="footer">
+          
+          
+          {/* <div className="footer">
             <Copyright/>
-          </div>
+          </div> */}
      
       </main>
      
