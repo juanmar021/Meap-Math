@@ -1,4 +1,11 @@
+Aplicación Web React.js para probar los distintos métodos y algoritmos de aproximación como Raphson, Secante, Biseccion etc
+
+## Capturas
+![Ejemplo 1](https://github.com/juanmar021/Meap-Math/blob/master/BICESSION.png)
+![Ejemplo 1](https://github.com/juanmar021/Meap-Math/blob/master/REGLA%20FALSA.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
